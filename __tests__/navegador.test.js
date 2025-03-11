@@ -14,21 +14,27 @@ describe('Mi primer test en puppeteer', () => {
 		});
 		const page = await browser.newPage();
         
-		await page.goto('https://google.com');
+		await page.goto('https://automationexercise.com/');
 		await new Promise(resolve => setTimeout(resolve, 1000));
         await page.waitForSelector('img');
-        await page.type('textarea', 'Spotify');
+        await page.type('H1', 'Exercise');
 
      
         const clickButtonGoogle = await Promise.all([
             page.waitForNavigation({waitUntil: 'networkidle0'}  ),
-            page.click('.FPdoLc > center:nth-child(1) > input:nth-child(1)'),
+            page.click('text=Women'),
+            page.click('.panel-body > ul > li:nth-child(2) > a'),
+            await page.waitForSelector('h2'),
+            await page.type('H1', 'Women - Tops Products'),
+            await page.screenshot({ path: 'captura.png' }),
+            //page.click('.FPdoLc > center:nth-child(1) > input:nth-child(1)'),
         ]);
 
-        const clickOptionSpotify = await Promise.all([
-            page.waitForNavigation({waitUntil: 'networkidle0'}  ),
-            page.click('text=Reproductor web: música para todos - Spotify'),
-        ]); 
+        //await page.screenshot({ path: 'captura.png' });
+        // const clickOptionSpotify = await Promise.all([
+        //     page.waitForNavigation({waitUntil: 'networkidle0'}  ),
+        //     page.click('text=Reproductor web: música para todos - Spotify'),
+        // ]); 
        
 
         //recargar la pagina
